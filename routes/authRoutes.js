@@ -1,13 +1,14 @@
 const express = require("express");
-const { registerUser } = require("../controllers/authController");
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
+const User = require("../models/User");
+const { registerUser, loginUser } = require("../controllers/authController");
 
 const router = express.Router();
 
 router.post("/register", registerUser);
 
-// Temporary test route
-router.get("/test", (req, res) => {
-    res.send("Auth route is working!");
-});
+//Login
+router.post("/login", loginUser);
 
 module.exports = router;
